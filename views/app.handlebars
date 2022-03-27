@@ -20,7 +20,17 @@
   </section>
   <section id="domos">
     <div class="domo">
-
+      {{#if domos}}
+        {{#each domos}}
+          <div class="domo">
+            <img src="/assets/img/domoface.jpeg" alt="domo face" class="domoFace">
+            <h3 class="domoName">name: {{this.name}}</h3>
+            <h3 class="domoAge">age: {{this.age}}</h3>
+          </div>
+        {{/each}}
+      {{else}}
+        <h3 class="emptyDomo">no domos yet</h3>
+      {{/if}}
     </div>
   </section>
   <div id="domoMessage" class='hidden'>

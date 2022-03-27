@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const expressHnadlebars = require('express-handlebars');
 const helmet = require('helmet');
+const session = require('express-session');
 
 const router = require('./router.js');
 
@@ -29,6 +30,14 @@ app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(session({
+  key: 'sessionid',
+  secret: 'minna no aiyouna jugyou',
+  resave: true,
+  saveUninitialized: true,
+}));
+
 app.engine('handlebars', expressHnadlebars.engine({ defaultLayout: '' }));
 app.set('view engine', 'handlebars');
 app.set('vuews', `${__dirname}/../views`);
