@@ -27,7 +27,7 @@ mongoose.connect(dbURI, (err) => {
 
 const redisURL = process.env.REDISCLOUD_URL || 'redis://default:JHd0kLNOfs8U6rwoKP1gmaogInkETANu@redis-15355.c262.us-east-1-3.ec2.cloud.redislabs.com:15355';
 
-let redisClient = redis.createClient({
+const redisClient = redis.createClient({
   legacyMode: true,
   url: redisURL,
 });
@@ -62,7 +62,7 @@ app.use(cookieParser());
 
 app.use(csrf());
 app.use((err, req, res, next) => {
-  if(err.code !== 'EBADCSRFTOKEN') {
+  if (err.code !== 'EBADCSRFTOKEN') {
     return next(err);
   }
 
