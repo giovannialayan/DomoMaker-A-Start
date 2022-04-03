@@ -89,7 +89,7 @@ const init = () => {
         return false;
       }
 
-      sendPost(loginForm.getAttribute('action'), {username, pass});
+      sendPost(loginForm.getAttribute('action'), {username, pass, _csrf});
       return false;
     });
   }
